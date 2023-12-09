@@ -1,23 +1,39 @@
 Recipe Stats Calculator
 ====
 
-In the given assignment we suggest you to process an automatically generated JSON file with recipe data and calculated some stats.
+This a CLI based Go application that processes JSON file with recipe data and calculate some stats.  
 
-Instructions
------
 
-1. Clone this repository.
-2. Create a new branch called `dev`.
-3. Create a pull request from your `dev` branch to the master branch.
-4. Reply to the thread you're having with your recruiter telling them we can start reviewing your code
 
-Given
------
+Data Format
+----
+```json5
+[
+    {
+      "postcode": "10224",
+      "recipe": "Creamy Dill Chicken",
+      "delivery": "Wednesday 1AM - 7PM"
+    },
+    {
+      "postcode": "10208",
+      "recipe": "Speedy Steak Fajitas",
+      "delivery": "Thursday 7AM - 5PM"
+    },
+    {
+      "postcode": "10120",
+      "recipe": "Cherry Balsamic Pork Chops",
+      "delivery": "Thursday 7AM - 9PM"
+    },
+    {
+      "postcode": "10130",
+      "recipe": "Cherry Balsamic Pork Chops",
+      "delivery": "Saturday 1AM - 8PM"
+    }
+]
+```
 
-Json fixtures file with recipe data. Download [Link](https://raw.githubusercontent.com/hellofreshdevtests/json-fixtures/content/hf_test_calculation_fixtures.tar.gz)
-
-_Important notes_
-
+_Notes_
+---
 1. Property value `"delivery"` always has the following format: "{weekday} {h}AM - {h}PM", i.e. "Monday 9AM - 5PM"
 2. The number of distinct postcodes is lower than `1M`, one postcode is not longer than `10` chars.
 3. The number of distinct recipe names is lower than `2K`, one recipe name is not longer than `100` chars.
@@ -39,19 +55,18 @@ Functional Requirements
 Non-functional Requirements
 --------
 
-1. The application is packaged with [Docker](https://www.docker.com/).
-2. Setup scripts are provided.
-3. The submission is provided as a `CLI` application.
-4. The expected output is rendered to `stdout`. Make sure to render only the final `json`. If you need to print additional info or debug, pipe it to `stderr`.
-5. It should be possible to (implementation is up to you):  
+1. The application is dockerized.
+2. Setup scripts are provided. We have done it using _Makefile_
+3. The expected output is rendered to `stdout`. Additional info/errore are piped to `stderr`.
+4. It is possible to:  
     a. provide a custom fixtures file as input  
     b. provide custom recipe names to search by (functional reqs. 5)  
     c. provide custom postcode and time window for search (functional reqs. 4)  
 
+
 Expected output
 ---------------
-
-Generate a JSON file of the following format:
+The app generates a JSON file of the following format:
 
 ```json5
 {
@@ -85,20 +100,3 @@ Generate a JSON file of the following format:
     ]
 }
 ```
-
-Review Criteria
----
-
-We expect that the assignment will not take more than 3 - 4 hours of work. In our judgement we rely on common sense
-and do not expect production ready code. We are rather instrested in your problem solving skills and command of the programming language that you chose.
-
-It worth mentioning that we will be testing your submission against different input data sets.
-
-__General criteria from most important to less important__:
-
-1. Functional and non-functional requirements are met.
-2. Prefer application efficiency over code organisation complexity.
-3. Code is readable and comprehensible. Setup instructions and run instructions are provided.
-4. Tests are showcased (_no need to cover everything_).
-5. Supporting notes on taken decisions and further clarifications are welcome.
-
