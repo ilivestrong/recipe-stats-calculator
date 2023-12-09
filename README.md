@@ -1,7 +1,7 @@
 Recipe Stats Calculator
 ====
 
-This a CLI based Go application that processes JSON file with recipe data and calculate some stats.  
+This a CLI based Go application that processes JSON file with recipe data and calculate some stats. Loads json data into memory and spin up Goroutines to process the data to calculate results/stats.
 
 
 App Preview
