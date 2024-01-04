@@ -10,8 +10,8 @@ import (
 	"github.com/ilivestrong/recipe-stats-calculator/config"
 )
 
-const (
-	deliveryTimePattern = `(\d{1,2})(?:AM|PM)`
+var (
+	deliveryTimeRegEx = regexp.MustCompile(`(\d{1,2})(?:AM|PM)`)
 )
 
 type (
@@ -228,8 +228,7 @@ func NewStatsCalculator(options *config.Options) RecipeStatsCalculator {
 
 // isWithin acts a utility func that helps to filter recipes based on user specified delivery start and end times.
 func (dt DeliveryTime) isWithin(startTimeFilter, endTimeFilter string) bool {
-	re := regexp.MustCompile(deliveryTimePattern)
-	matches := re.FindAllStringSubmatch(string(dt), -1)
+	matches := deliveryTimeRegEx.FindAllStringSubmatch(string(dt), -1)
 
 	startTime, err := parseTime(startTimeFilter)
 	if err != nil {
